@@ -23,10 +23,9 @@ const int echoPin = 10;
 
 void setup() {
   // initialize serial communication:
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT); // initialize digital pin LED_BUILTIN as an output.
   pinMode(3, OUTPUT); // initialize digital pin 2 as an output.
-  
 }
 
 void loop()
@@ -52,30 +51,17 @@ void loop()
 
   // convert the time into a distance
   cm = duration / 29 / 2;
-  
-  Serial.print(cm);
-  Serial.print("cm");
-  Serial.println();
 
-  
-  // if distance is more than 2m
-  if  (cm > 200) {
-    digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level) 
-    tone(3, 50, 20);
-    delay(1000);
-  }
-  else if ( (cm > 100) and (cm < 200)) {
-    digitalWrite(LED_BUILTIN, HIGH);    // turn the LED off by making the voltage LOW  
-    tone(3, 220);
-    delay(200);
-  }
-  if  ((cm < 100) and (cm > 0)) {
-    digitalWrite(LED_BUILTIN, HIGH);    // turn the LED off by making the voltage LOW  
-    tone(3, 440, 20);
-    delay(100);
-  }
+//  Serial.print("cm ");
+  Serial.println(cm);
 
-  delay(50);
+  if (cm < 40) {
+    digitalWrite(LED_BUILTIN, HIGH);
+  }
+  else {
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+  delay(5);
 }
 
 
