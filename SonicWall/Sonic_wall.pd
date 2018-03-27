@@ -1,0 +1,374 @@
+#N canvas 1 81 413 334 10;
+#N canvas 645 112 647 354 kinect 0;
+#X obj 304 93 gemhead;
+#N canvas 183 383 844 360 properties 0;
+#X obj 13 46 cnv 15 140 220 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X msg 18 230 led \$1;
+#X obj 18 111 vradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 18 207 5 0 0 0 - - -, f 5;
+#X msg 95 230 angle \$1;
+#X obj 95 74 vsl 15 128 -30 30 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 95 211 5 0 0 0 - - -, f 5;
+#X msg 45 49 0;
+#X text 34 125 GREEN;
+#X text 35 109 OFF;
+#X text 34 141 RED;
+#X text 34 156 YELLOW;
+#X text 34 171 BLINK_GR;
+#X text 34 185 BLINK_R_Y;
+#X obj 168 48 cnv 15 320 120 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 179 85 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 179 120 5 0 0 0 - - -, f 5;
+#X obj 244 86 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X floatatom 244 121 5 0 0 0 - - -, f 5;
+#X msg 179 141 rgb \$1;
+#X msg 244 142 depth \$1;
+#X text 171 48 activate/deactivate streams;
+#X text 173 62 save cpu power by just activating necessary streams!
+;
+#X obj 496 49 cnv 15 315 120 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X obj 499 88 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 499 123 5 0 0 0 - - -, f 5;
+#X msg 499 143 depth_output \$1;
+#X text 646 111 b = 0 \, a = 0;
+#X text 21 4 properties for pix_freenect;
+#X text 517 26 DEPTH OUTPUT;
+#X text 190 27 STREAMS;
+#X text 36 27 LED \, ANGLE;
+#X text 645 98 r->3 msbits \, g ->8 lsbits;
+#X text 518 101 Raw YUV (2 bytes) |;
+#X text 518 86 Raw RGBA -> 11 bit output in r&g channel;
+#X obj 168 192 cnv 15 520 120 empty empty empty 20 12 0 14 -261682
+-66577 0;
+#X obj 180 215 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X floatatom 180 264 5 0 0 0 - - -, f 5;
+#X obj 368 226 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 368 261 5 0 0 0 - - -, f 5;
+#X msg 180 285 depth_mode \$1;
+#X text 201 243 11bit raw;
+#X text 503 52 set depth output colorspace;
+#X text 171 195 set output formats;
+#X text 201 227 mm aligned to rgb (16 bit);
+#X text 201 213 mm unaligned (16 bit);
+#X msg 368 282 video_mode \$1;
+#X text 388 224 RGB;
+#X text 387 240 IR;
+#X obj 18 256 s \$0-prop;
+#X obj 179 166 s \$0-prop;
+#X obj 499 169 s \$0-prop;
+#X obj 180 314 s \$0-prop;
+#X obj 484 220 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X floatatom 484 268 5 0 0 0 - - -, f 5;
+#X msg 484 287 resolution \$1;
+#X text 504 234 MEDIUM (default);
+#X text 481 197 RGB RESOLUTION;
+#X text 504 249 HIGH (restart rgb stream!);
+#X text 504 219 LOW (not displaying correctly);
+#X msg 106 314 1;
+#X text 444 313 HIGH Resolution IR works just if depth stream is shut
+down!!;
+#X obj 107 288 r B;
+#X msg 80 48 20;
+#X text 105 49 ground;
+#X obj 115 24 r CamAngle;
+#X obj -18 -14 r IsConnected;
+#X connect 1 0 49 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 49 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 5 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 19 0 50 0;
+#X connect 20 0 50 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 51 0;
+#X connect 36 0 37 0;
+#X connect 37 0 40 0;
+#X connect 38 0 39 0;
+#X connect 39 0 46 0;
+#X connect 40 0 52 0;
+#X connect 46 0 52 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 0;
+#X connect 55 0 52 0;
+#X connect 60 0 36 0;
+#X connect 62 0 60 0;
+#X connect 63 0 5 0;
+#X connect 65 0 5 0;
+#X connect 66 0 2 0;
+#X restore 42 24 pd properties;
+#X text 312 74 gemhead for rgb;
+#X text 432 73 and for depth;
+#X text 319 155 rgb;
+#X msg 242 125 info;
+#X obj 240 35 r \$0-prop;
+#X obj 486 208 tgl 15 0 empty empty mode 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 422 211 tgl 15 0 empty empty on/off 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 491 249 nbx 5 14 -1e+37 1e+37 0 0 empty empty hi_thresh 0 -8
+0 10 -262144 -1 -1 923.695 256;
+#X obj 401 272 pix_depth2rgba 5000 100;
+#X obj 555 247 nbx 5 14 -1e+37 1e+37 0 0 empty empty lo_thresh 0 -8
+0 10 -262144 -1 -1 0 256;
+#N canvas 438 404 569 230 thresholds 0;
+#X obj 69 177 outlet;
+#X msg 31 63 lo_thresh \$1;
+#X msg 69 109 hi_thresh \$1;
+#X floatatom 31 46 5 0 0 0 - - -, f 5;
+#X floatatom 69 92 5 0 0 0 - - -, f 5;
+#X text 72 17 low threshold default to 10.1;
+#X text 109 89 same as third inlet \, set by arg \, default 8000;
+#X text 162 186 pixel which are out of bounds are zeroes;
+#X text 163 149 this normalizes the color gradient from lo_thresh to
+hi_thresh;
+#X text 89 33 same as fourth inlet \, set by second creation arg;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X restore 299 238 pd thresholds;
+#X obj 304 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 425 55 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 409 154 Depth;
+#X obj 399 296 s Dimg;
+#X obj 304 176 s RGBimg;
+#X text 226 106 get serial;
+#X obj 425 93 gemhead 52;
+#X msg 482 179 1;
+#X msg 555 155 4000;
+#X msg 598 155 2000;
+#X obj 421 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 579 182 0;
+#X msg 538 183 10000;
+#X obj 559 64 r B;
+#X obj 168 32 vsl 15 250 0 10000 0 0 empty maxDist-r empty 0 -9 0 10
+-262144 -1 -1 2300 1;
+#X obj 199 33 vsl 15 250 0 10000 0 0 empty minDist-r empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 97 90 vsl 15 128 -30 30 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X msg 47 65 0;
+#X msg 82 64 20;
+#X text 107 65 ground;
+#X obj 64 246 s CamAngle;
+#X obj 232 298 nbx 5 14 -1e+37 1e+37 0 0 empty minDist-r empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 170 298 nbx 5 14 -1e+37 1e+37 0 0 empty maxDist-r empty 0 -8
+0 10 -262144 -1 -1 923.695 256;
+#X obj 304 133 pix_freenect 0 1 1;
+#X connect 0 0 36 0;
+#X connect 5 0 36 0;
+#X connect 6 0 36 0;
+#X connect 7 0 10 1;
+#X connect 8 0 10 0;
+#X connect 9 0 10 2;
+#X connect 10 0 16 0;
+#X connect 11 0 10 3;
+#X connect 12 0 10 0;
+#X connect 13 0 0 0;
+#X connect 14 0 19 0;
+#X connect 19 0 36 1;
+#X connect 20 0 8 0;
+#X connect 20 0 7 0;
+#X connect 21 0 9 0;
+#X connect 22 0 11 0;
+#X connect 23 0 13 0;
+#X connect 23 0 14 0;
+#X connect 24 0 11 0;
+#X connect 25 0 9 0;
+#X connect 26 0 25 0;
+#X connect 26 0 24 0;
+#X connect 26 0 20 0;
+#X connect 27 0 9 0;
+#X connect 28 0 11 0;
+#X connect 29 0 33 0;
+#X connect 30 0 29 0;
+#X connect 31 0 29 0;
+#X connect 36 0 17 0;
+#X connect 36 1 10 0;
+#X restore 22 91 pd kinect;
+#N canvas 176 90 363 453 detection 0;
+#X obj 81 315 pix_texture;
+#X obj 81 384 rectangle 5.33 4;
+#X obj 173 19 r RGBimg;
+#X floatatom 157 150 5 0 1 1 pass - -, f 5;
+#X floatatom 172 170 5 0 1 1 other - -, f 5;
+#X obj 143 244 pix_alpha;
+#X msg 186 195 1 1 1;
+#X obj 186 47 alpha;
+#X msg 244 180 \$1 \$1 \$1;
+#X msg 214 223 0.01 0.01 0.01;
+#X floatatom 245 151 5 0 0 0 - - -, f 5;
+#X obj 46 17 r Dimg;
+#X floatatom 195 325 5 0 0 0 - - -, f 5;
+#X obj 46 138 pix_gain;
+#X obj 46 41 pix_gray;
+#X msg 101 79 4;
+#X obj 75 204 pix_rgba;
+#X obj 81 352 translateXYZ 0 0 0.65;
+#X obj 101 58 r B;
+#X floatatom 100 102 5 0 0 0 - - -, f 5;
+#X connect 0 0 17 0;
+#X connect 2 0 7 0;
+#X connect 3 0 5 1;
+#X connect 4 0 5 2;
+#X connect 5 0 0 0;
+#X connect 6 0 5 3;
+#X connect 8 0 5 3;
+#X connect 9 0 5 4;
+#X connect 10 0 8 0;
+#X connect 11 0 14 0;
+#X connect 12 0 17 3;
+#X connect 13 0 16 0;
+#X connect 14 0 13 0;
+#X connect 15 0 19 0;
+#X connect 16 0 5 0;
+#X connect 17 0 1 0;
+#X connect 18 0 15 0;
+#X connect 19 0 13 1;
+#X restore 22 114 pd detection;
+#N canvas 421 233 270 235 init 0;
+#X obj 55 27 loadbang;
+#X obj 60 49 s B;
+#X obj 129 27 zexy;
+#X obj 11 24 inlet;
+#X obj 25 174 gemwin;
+#X msg 62 140 0 \, destroy;
+#X msg 19 104 dimen 800 600 \, fps 30 \, create \, 1;
+#X floatatom 156 63 5 0 0 0 - DelTime-ctl -, f 5;
+#X msg 115 57 1;
+#X obj 19 71 sel 1 0;
+#X connect 0 0 1 0;
+#X connect 0 0 8 0;
+#X connect 3 0 1 0;
+#X connect 3 0 9 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 9 0 6 0;
+#X connect 9 1 5 0;
+#X restore 24 58 pd init;
+#X obj 224 30 vsl 50 250 0 10000 0 0 minDist-r minDist-android empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 120 29 vsl 50 250 0 10000 0 0 maxDist-r maxDist-android empty
+0 -9 0 10 -262144 -1 -1 2300 1;
+#X obj 222 290 nbx 5 14 -1e+37 1e+37 0 0 empty minDist-r empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 121 290 nbx 5 14 -1e+37 1e+37 0 0 empty maxDist-r empty 0 -8
+0 10 -262144 -1 -1 923.695 256;
+#X text 119 308 MaxD;
+#X text 223 308 MinD;
+#X obj 328 80 vsl 50 200 -30 30 0 0 CamAngle CamAngle-android empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 327 290 nbx 5 14 -1e+37 1e+37 0 0 empty CamAngle empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X text 326 307 CamAngle;
+#N canvas 1 301 450 300 connections 0;
+#X obj 32 11 netreceive 7000;
+#X obj 32 295 s maxDist-android;
+#X obj 54 256 s minDist-android;
+#X obj 98 225 s CamAngle-android;
+#X obj 198 195 s cenarioBang-android;
+#X floatatom 119 63 5 0 0 0 - - -, f 5;
+#X floatatom 42 195 5 0 0 0 - - -, f 5;
+#X obj 191 56 > 0;
+#X floatatom 349 110 5 0 0 0 - - -, f 5;
+#X floatatom 193 25 5 0 0 0 - - -, f 5;
+#X obj 191 78 * 3;
+#X obj 191 101 s IsConnected;
+#X obj 32 136 route maxDist-android minDist-android CamAngle-android
+cenarioBang-android DelTime-ctl;
+#X obj 269 227 s DelTime-ctl;
+#X connect 0 0 12 0;
+#X connect 0 1 5 0;
+#X connect 0 1 7 0;
+#X connect 7 0 10 0;
+#X connect 9 0 7 0;
+#X connect 10 0 11 0;
+#X connect 12 0 1 0;
+#X connect 12 0 6 0;
+#X connect 12 1 2 0;
+#X connect 12 2 3 0;
+#X connect 12 3 4 0;
+#X connect 12 4 13 0;
+#X restore 22 141 pd connections;
+#X obj 22 185 s H-Flip;
+#X obj 22 165 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 22 280 479 474 hotspots 1;
+#X floatatom 157 46 5 0 0 0 - - -, f 5;
+#X obj 157 67 s X;
+#X floatatom 215 49 5 0 0 0 - - -, f 5;
+#X obj 215 69 s Y;
+#X obj 18 53 gemhead;
+#X obj 19 75 t b;
+#X obj 19 99 s BB;
+#X obj 55 138 hotspot 0 -2.5 2.5;
+#X obj 55 171 hotspot 1 -2.5 1.5;
+#X obj 55 204 hotspot 2 -2.5 0.5;
+#X obj 55 237 hotspot 3 -2.5 -0.5;
+#X obj 199 138 hotspot 4 0 2.5;
+#X obj 199 171 hotspot 5 0 1.5;
+#X obj 199 204 hotspot 6 0 0.5;
+#X obj 199 237 hotspot 7 0 -0.5;
+#X obj 329 138 hotspot 4 2.5 2.5;
+#X obj 329 171 hotspot 5 2.5 1.5;
+#X obj 329 204 hotspot 6 2.5 0.5;
+#X obj 329 237 hotspot 7 2.5 -0.5;
+#X obj 288 85 s width;
+#X obj 344 85 s decay;
+#X obj 405 86 s cutoff;
+#X floatatom 289 62 5 0 0 0 - - -, f 5;
+#X floatatom 341 60 5 0 0 0 - - -, f 5;
+#X floatatom 399 63 5 0 0 0 - - -, f 5;
+#X floatatom 457 61 5 0 0 0 - - -, f 5;
+#X obj 57 292 spotplay 0 40;
+#X msg 337 35 0.98;
+#X obj 342 8 loadbang;
+#X obj 57 333 spotplay 1 32;
+#X obj 57 374 spotplay 2 24;
+#X obj 57 415 spotplay 3 16;
+#X msg 296 32 0.1;
+#X msg 390 36 0.5;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 22 0 19 0;
+#X connect 23 0 20 0;
+#X connect 24 0 21 0;
+#X connect 27 0 23 0;
+#X connect 28 0 33 0;
+#X connect 28 0 27 0;
+#X connect 28 0 32 0;
+#X connect 32 0 22 0;
+#X connect 33 0 24 0;
+#X restore 21 244 pd hotspots;
+#X obj 25 38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 18 303 dac~;
+#X obj 20 275 catch~ somOut;
+#X connect 14 0 13 0;
+#X connect 16 0 2 0;
+#X connect 18 0 17 1;
+#X connect 18 0 17 0;

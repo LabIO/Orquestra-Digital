@@ -1,0 +1,84 @@
+#N canvas 1 283 572 373 10;
+#X obj 241 12 vsl 80 270 0 10000 0 0 maxDist-android empty empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X obj 247 305 nbx 5 14 -1e+37 1e+37 0 0 empty maxDist-android empty
+0 -8 0 10 -262144 -1 -1 0 256;
+#X text 235 323 MaxD;
+#N canvas 51 141 601 456 conn 0;
+#X obj 117 301 netsend;
+#X obj 117 355 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 117 75 read ip.txt \, rewind \, bang;
+#X obj 117 112 textfile;
+#X msg 29 276 disconnect;
+#X obj 300 50 delay 1000;
+#X obj 300 109 s CamAngle-android-set;
+#X msg 300 86 0;
+#X obj 130 327 outlet;
+#X msg 12 46 connect 192.168.1.165 7000;
+#X obj 146 3 r connect;
+#X obj 117 376 s connected;
+#X obj 218 304 r maxDist-android;
+#X msg 206 337 send maxDist-android \$1;
+#X obj 376 302 r minDist-android;
+#X msg 364 334 send minDist-android \$1;
+#X obj 227 373 r CamAngle-android;
+#X msg 215 406 send CamAngle-android \$1;
+#X obj 411 374 r cenarioBang-android;
+#X obj 535 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 399 407 send cenarioBang-android bang;
+#X obj 118 153 list prepend connect;
+#X obj 118 190 list trim;
+#X obj 374 239 r DelTime;
+#X msg 373 266 send DelTime-ctl \$1;
+#X msg 223 258 send snap-android bang;
+#X obj 224 234 r snap-android;
+#X connect 0 0 1 0;
+#X connect 0 0 8 0;
+#X connect 1 0 11 0;
+#X connect 2 0 3 0;
+#X connect 3 0 21 0;
+#X connect 4 0 0 0;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X connect 9 0 0 0;
+#X connect 10 0 2 0;
+#X connect 10 0 5 0;
+#X connect 12 0 13 0;
+#X connect 13 0 0 0;
+#X connect 14 0 15 0;
+#X connect 15 0 0 0;
+#X connect 16 0 17 0;
+#X connect 17 0 0 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 0;
+#X connect 20 0 0 0;
+#X connect 21 0 22 0;
+#X connect 22 0 0 0;
+#X connect 23 0 24 0;
+#X connect 24 0 0 0;
+#X connect 25 0 0 0;
+#X connect 26 0 25 0;
+#X restore 56 90 pd conn;
+#X obj 341 12 vsl 80 270 0 10000 0 0 minDist-android empty empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X obj 354 306 nbx 5 14 -1e+37 1e+37 0 0 empty minDist-android empty
+0 -8 0 10 -262144 -1 -1 0 256;
+#X text 355 324 MinD;
+#X obj 466 12 vsl 80 270 -30 30 0 0 CamAngle-android CamAngle-android-set
+empty 0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 466 307 nbx 5 14 -1e+37 1e+37 0 0 empty CamAngle-android empty
+0 -8 0 10 -262144 -1 -1 0 256;
+#X text 465 324 CamAngle;
+#X obj 113 11 bng 80 250 50 0 cenarioBang-android empty bang_scene
+10 40 0 10 -262144 -1 -1;
+#X obj 19 88 tgl 30 0 empty connected empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 18 21 bng 50 250 50 0 connect empty Connect 0 -10 0 10 -262144
+-1 -1;
+#X obj 49 204 bng 120 250 50 0 snap-android empty SNAP! 20 60 0 30
+-262144 -1 -1;
+#X obj 18 147 numberbox 64 42 numreceive DelTime 0 60 0;
+#X text 13 349 ONIRYCUM CONTROL - LabIO2015;
+#X text 16 132 DelayTime;
