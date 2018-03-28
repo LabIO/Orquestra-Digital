@@ -1,0 +1,50 @@
+#N canvas 519 111 693 292 10;
+#X obj 51 140 catch~ somOut;
+#X obj 44 47 netreceive 3333;
+#X floatatom 412 74 5 0 0 0 - - -, f 5;
+#X floatatom 382 125 5 0 0 0 - - -, f 5;
+#X floatatom 354 175 5 0 0 0 - - -, f 5;
+#X obj 351 49 loadbang;
+#X obj 44 77 s netstuff;
+#X obj 49 168 *~;
+#X obj 46 207 dac~;
+#X msg 163 47 \; pd dsp 1;
+#X obj 146 137 vsl 25 80 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5600 1;
+#X msg 412 48 8;
+#X msg 382 100 0.995;
+#X msg 354 152 5700;
+#X obj 476 125 hsl 180 15 1 40 0 0 width empty width -2 -8 1 10 -262144
+-1 -1 3213 1;
+#X obj 475 156 hsl 180 15 0.9 0.999 0 0 decay empty decay -2 -8 1 10
+-262144 -1 -1 17177 1;
+#X obj 475 186 hsl 180 15 100 8000 0 0 cutoff empty cutoff -2 -8 1
+10 -262144 -1 -1 12689 1;
+#N canvas 1 55 450 300 spotplays 1;
+#X obj 29 77 spotplay 1 32;
+#X obj 29 36 spotplay 0 40;
+#X obj 29 118 spotplay 2 24;
+#X obj 29 159 spotplay 3 16;
+#X obj 158 160 spotplay 7 45;
+#X obj 158 119 spotplay 6 53;
+#X obj 158 78 spotplay 5 61;
+#X obj 158 37 spotplay 4 69;
+#X obj 315 160 spotplay 11 74;
+#X obj 315 119 spotplay 10 82;
+#X obj 315 78 spotplay 9 90;
+#X obj 314 37 spotplay 8 98;
+#X restore 159 78 pd spotplays;
+#X connect 0 0 7 0;
+#X connect 1 0 6 0;
+#X connect 2 0 14 0;
+#X connect 3 0 15 0;
+#X connect 4 0 16 0;
+#X connect 5 0 13 0;
+#X connect 5 0 12 0;
+#X connect 5 0 11 0;
+#X connect 7 0 8 0;
+#X connect 7 0 8 1;
+#X connect 10 0 7 1;
+#X connect 11 0 2 0;
+#X connect 12 0 3 0;
+#X connect 13 0 4 0;
